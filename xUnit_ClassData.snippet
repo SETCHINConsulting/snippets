@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>xUnit ClassData Theory</Title>
+			<Shortcut>xUnitClassDataTheory</Shortcut>
+			<Description>Code snippet for xUnit ClassData Theory</Description>
+			<Author>Vlad Setchin</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>ClassDataName</ID>
+                    <ToolTip>Replace with name of the ClassData class</ToolTip>
+                    <Default>ClassData1</Default>
+                </Literal>
+                <Literal>
+                    <ID>TestName</ID>
+                    <ToolTip>Replace with name of the test</ToolTip>
+                    <Default>Test</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[
+                    [Theory]
+                    [ClassData(typeof($ClassDataName$))]
+                    public void $TestName$(Class c, bool expectedResult)
+                    {
+                    Assert.Equal(expectedResult, c.A);
+                    }
+
+                    private class $ClassDataName$ : IEnumerable<object[]>
+                    {
+                        private readonly List<object[]> _data = new List<object[]>
+                        {
+                            new object[] 
+                            {
+                            new Class() { A = true, B = 2 }, 
+                            true
+                            }
+                            //new object[] 
+                            //    {
+                            //    , 
+                            //    },
+                        };
+
+                        public IEnumerator<object[]> GetEnumerator()
+                        {
+                            return _data.GetEnumerator();
+                        }
+
+                        IEnumerator IEnumerable.GetEnumerator()
+                        {
+                            return GetEnumerator();
+                        }
+                    }
+                ]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

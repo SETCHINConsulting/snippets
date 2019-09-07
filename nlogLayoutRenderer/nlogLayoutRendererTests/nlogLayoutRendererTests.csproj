@@ -6,11 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="nlog" Version="4.5.3" />
+    <PackageReference Include="nlog" Version="4.6.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\nlogLayoutRenderer\nlogLayoutRenderer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

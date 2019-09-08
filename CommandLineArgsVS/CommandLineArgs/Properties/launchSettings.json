@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CommandLineArgs": {
+      "commandName": "Project",
+      "commandLineArgs": "--server localhost --username vlad --database testdb"
+    }
+  }
+}
